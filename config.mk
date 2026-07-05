@@ -16,6 +16,7 @@ HAVE_INOTIFY = $(OPT_DEP_DEFAULT)
 HAVE_LIBFONTS = $(OPT_DEP_DEFAULT)
 HAVE_LIBEXIF  = $(OPT_DEP_DEFAULT)
 
+
 # CFLAGS, any additional compiler flags goes here
 CFLAGS = -Wall -pedantic -O2 -DNDEBUG
 # Uncomment for a debug build using gcc/clang

@@ -7,12 +7,12 @@ static const int WIN_HEIGHT = 600;
 /* colors and font can be overwritten via X resource properties.
  * See nsxiv(1), X(7) section Resources and xrdb(1) for more information.
  *                                      X resource            value (NULL == default) */
-static const char *WIN_BG[]   = { "Nsxiv.window.background",   "white" };
-static const char *WIN_FG[]   = { "Nsxiv.window.foreground",   "black" };
-static const char *MARK_FG[]  = { "Nsxiv.mark.foreground",      NULL };
+static const char *WIN_BG[]   = { "Nsxiv.window.background",   "#051b35" };
+static const char *WIN_FG[]   = { "Nsxiv.window.foreground",   "#d6b8a1" };
+static const char *MARK_FG[]  = { "Nsxiv.mark.foreground",     "#a34c65" };
 #if HAVE_LIBFONTS
-static const char *BAR_BG[]   = { "Nsxiv.bar.background",       NULL };
-static const char *BAR_FG[]   = { "Nsxiv.bar.foreground",       NULL };
+static const char *BAR_BG[]   = { "Nsxiv.bar.background",       "#0C0B15" };
+static const char *BAR_FG[]   = { "Nsxiv.bar.foreground",       "#d6b8a1" };
 static const char *BAR_FONT[] = { "Nsxiv.bar.font",            "monospace-8" };
 
 /* if true, statusbar appears on top of the window */
@@ -118,8 +118,8 @@ static const keymap_t keys[] = {
 	{ ControlMask,  XK_l,             g_scroll_screen,      DIR_RIGHT },
 	{ ControlMask,  XK_Right,         g_scroll_screen,      DIR_RIGHT },
 	{ 0,            XK_plus,          g_zoom,               +1 },
+	{ 0,            XK_equal,          g_zoom,               +1 },
 	{ 0,            XK_KP_Add,        g_zoom,               +1 },
-	{ 0,            XK_minus,         g_zoom,               -1 },
 	{ 0,            XK_KP_Subtract,   g_zoom,               -1 },
 	{ 0,            XK_m,             g_toggle_image_mark,  None },
 	{ 0,            XK_M,             g_mark_range,         None },
@@ -147,7 +147,7 @@ static const keymap_t keys[] = {
 
 	{ 0,            XK_n,             i_navigate,           +1 },
 	{ 0,            XK_n,             i_scroll_to_edge,     DIR_LEFT | DIR_UP },
-	{ 0,            XK_space,         i_navigate,           +1 },
+	// { 0,            XK_space,         i_navigate,           +1 },
 	{ 0,            XK_p,             i_navigate,           -1 },
 	{ 0,            XK_p,             i_scroll_to_edge,     DIR_LEFT | DIR_UP },
 	{ 0,            XK_BackSpace,     i_navigate,           -1 },
@@ -171,7 +171,7 @@ static const keymap_t keys[] = {
 	{ 0,            XK_K,             i_scroll_to_edge,     DIR_UP },
 	{ 0,            XK_L,             i_scroll_to_edge,     DIR_RIGHT },
 	{ 0,            XK_z,             i_scroll_to_center,   None },
-	{ 0,            XK_equal,         i_set_zoom,           100 },
+	{ 0,            XK_space,         i_set_zoom,           100 },
 	{ 0,            XK_w,             i_fit_to_win,         SCALE_DOWN },
 	{ 0,            XK_W,             i_fit_to_win,         SCALE_FIT },
 	{ 0,            XK_F,             i_fit_to_win,         SCALE_FILL },
@@ -181,7 +181,9 @@ static const keymap_t keys[] = {
 	{ 0,            XK_greater,       i_rotate,             DEGREE_90 },
 	{ 0,            XK_question,      i_rotate,             DEGREE_180 },
 	{ 0,            XK_bar,           i_flip,               FLIP_HORIZONTAL },
-	{ 0,            XK_underscore,    i_flip,               FLIP_VERTICAL },
+	{ 0,		XK_backslash,	  i_flip,		FLIP_VERTICAL },
+	{ 0,            XK_underscore,    g_zoom,               -1 },
+	{ 0,            XK_minus,         g_zoom,               -1 },
 	{ 0,            XK_a,             i_toggle_antialias,   None },
 	{ 0,            XK_A,             i_toggle_alpha,       None },
 	{ 0,            XK_s,             i_slideshow,          None },

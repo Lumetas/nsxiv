@@ -9,14 +9,14 @@ lib_fonts_1 = -lXft -lfontconfig
 lib_exif_0 =
 lib_exif_1 = -lexif
 
+
 nsxiv_cppflags = -D_XOPEN_SOURCE=700 \
   -DHAVE_LIBEXIF=$(HAVE_LIBEXIF) -DHAVE_LIBFONTS=$(HAVE_LIBFONTS) \
-  -DHAVE_INOTIFY=$(HAVE_INOTIFY) $(inc_fonts_$(HAVE_LIBFONTS)) \
-  $(CPPFLAGS)
+  -DHAVE_INOTIFY=$(HAVE_INOTIFY) \
+  $(inc_fonts_$(HAVE_LIBFONTS)) $(CPPFLAGS)
 
 nsxiv_ldlibs = -lImlib2 -lX11 \
-  $(lib_exif_$(HAVE_LIBEXIF)) $(lib_fonts_$(HAVE_LIBFONTS)) \
-  $(LDLIBS)
+  $(lib_exif_$(HAVE_LIBEXIF)) $(lib_fonts_$(HAVE_LIBFONTS)) $(LDLIBS)
 
 objs = autoreload.o commands.o image.o main.o options.o \
   thumbs.o util.o window.o
@@ -84,7 +84,7 @@ uninstall-icon:
 install: all
 	@echo "INSTALL bin/nsxiv"
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp nsxiv $(DESTDIR)$(PREFIX)/bin/
+	cp -f nsxiv $(DESTDIR)$(PREFIX)/bin/
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/nsxiv
 	@echo "INSTALL nsxiv.1"
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
