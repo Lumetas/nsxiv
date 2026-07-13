@@ -106,3 +106,6 @@ uninstall: uninstall-icon
 	@echo "REMOVE share/nsxiv/"
 	rm -rf $(DESTDIR)$(EGPREFIX)
 
+setDefault:
+	@echo "SETTING DEFAULT"
+	xdg-mime default nsxiv.desktop image/jpeg image/png image/gif image/webp image/bmp image/svg+xml image/tiff image/x-icon
